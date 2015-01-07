@@ -1,0 +1,73 @@
+#!/bin/bash
+
+# GIT SHORTCUTS
+# MIT License (c) 2015
+
+# Script Overview and Initiation
+# --------------------------------------------------------------------------------
+# 1) Check for shell profile file (e.g. ~/.bash_profile, ~/.bashrc, ~/.profile)
+# 2) Define user commands (e.g. git_init, git_push, git_remove...)
+# ?) Define script initiation function (execute at end of file)
+# -2) modify profile file
+# -1) source profile file
+
+
+# Initialize Local Git Repository
+function git_init() {
+    touch README.md;
+    echo "Project Name\n===========" >> README.md;
+    touch .gitignore;
+    echo ".gitignore\n" >> .gitignore;
+
+    git init;
+    git add README.md;
+    git commit -m "first commit";
+    git remote add origin https://github.com/openwonk/git.shorty.git;
+    git push -u origin master;
+}
+
+
+# Push Changes to Github Repository
+function git_push() {
+    if [ $1 ]; then
+        message="$1";
+    else
+        message="auto commit";
+    fi
+    
+    git add .;
+    git commit -m $message;
+    git push -u origin master;
+}
+
+
+function git_pull() {
+    #  Pull Request
+    
+}
+
+function clean() {
+    # Clean folder and all subfolders of given file(s) matching args
+    # Example:
+    #   $ find . -name $1 | ...
+}
+
+# Define Script Initialization
+function init() {
+    
+    # Insert script functions into profile
+    $script >> ~/.bash_profile;
+    # Source profile
+    source ~/.bash_profile;
+
+
+}
+
+
+
+# Initialize Script
+init;
+
+
+# TODO
+# - Create Go binary that loads contents of adjacent script into bash profile
