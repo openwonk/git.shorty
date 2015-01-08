@@ -27,3 +27,25 @@ func Source(filepath string) []byte {
 
     return f
 }   
+
+
+func ModProfile() {
+	originFile, err := os.Open("shorty")
+	check(err)
+
+	var data []byte
+	_, err = originFile.Read(data)
+	check(err)
+
+	targetFile, err := os.Open("~/.bash_profile_test")
+	check(err)
+
+	targetFile.Write(data)
+
+}
+
+func check(err error) {
+	if err != nil {
+		fmt.Println(err)
+	}
+}
