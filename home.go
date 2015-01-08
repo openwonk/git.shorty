@@ -1,4 +1,5 @@
 package shorty
+// http://stackoverflow.com/questions/7922270/obtain-users-home-directory
 
 import (
     "os/user"
